@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap2</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+<%=render 'layouts/header'%>
+      <!-- <div class="jumbotron">ここに写真が来る</div> -->
+      <div class="jumbotron">
+        <h1>TwiitercloneをBootstrapで実装</h1>
+      </div>
+      <div class="row">
+
+        <aside class=" hidden-xs col-md-3 col-lg-3 maincontents1">
+          <article class="">
+            <h2>ここにイメージ画像を入れる</h2>
+            <ul class="">
+              <li>ダミー</li>
+              <li>ダミー</li>
+              <li>ダミー</li>
+              <li>ダミー</li>
+              <li>ダミー</li>
+            </ul>
+          </article>
+        </aside>
+        <div class="col-xs-12 col-md-6 col-lg-6 text-center maincontents2">
+          <%= yield %>
+        </div>
+        <aside class="hidden-xs col-md-3 col-lg-3 maincontents3">
+          <article class="">
+            <h2>ここにプロフィールを入れる</h2>
+            <ul class="">
+              <li>ダミー</li>
+              <li>ダミー</li>
+              <li>ダミー</li>
+              <li>ダミー</li>
+              <li>ダミー</li>
+            </ul>
+          </article>
+        </aside>
+
+        <footer class="footer">
+          <div class="container">
+            <p class="text-muted">Place sticky footer content here.</p>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!-- flashにメッセージがある時 -->
+    <% unless flash.empty? %>
+    <script type="text/javascript">
+      <% flash.each do |f| %>
+      <% type = f[0].to_s.gsub('alert','error').gsub('notice','info') %>
+      toastr['<%= type %>']('<%= f[1] %>');
+      <% end %>
+    </script>
+    <% end %>
+  </body>
+</html>

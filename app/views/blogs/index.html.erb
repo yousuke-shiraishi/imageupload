@@ -1,0 +1,23 @@
+
+<h1>Blogs</h1>
+<%= link_to '新しいBlos', new_blog_path %>
+<table>
+  <thead>
+    <tr>
+      <!-- <th>Title</th> -->
+      <th></th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @blogs.each do |blog| %>
+      <tr class="wrapper">
+        <td id="blogscontent"><%= blog.content %></td>
+        <td class="adjust"><br><br><br><br><%= link_to '確認', blog, class: "btn btn-xs btn-primary" %></td>
+        <td class="adjust"><br><br><br><br><%= link_to '編集', edit_blog_path(blog), class: "btn btn-xs btn-primary" %></td>
+        <td class="adjust"><br><br><br><br><%= link_to '削除', blog, class: "btn btn-xs btn-warning",method: :delete, data: { confirm: '削除して構いませんか？' } %></td>
+        <td id="blogpl"><br><br><br><br><%= blog.updated_at %></td>
+      </tr>
+    <% end %>
+</tbody>
+</table>

@@ -1,0 +1,8 @@
+
+<p>
+  <strong>Content:</strong>
+  <%= @blog.content %>
+</p>
+
+<%= link_to '編集', edit_blog_path(@blog)  , class: "btn btn-xs btn-primary"%> |
+<%= link_to '戻る', blogs_path , class: "btn btn-xs btn-primary" %>
