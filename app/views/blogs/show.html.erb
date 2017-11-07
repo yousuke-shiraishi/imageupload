@@ -6,3 +6,11 @@
 
 <%= link_to '編集', edit_blog_path(@blog)  , class: "btn btn-xs btn-primary"%> |
 <%= link_to '戻る', blogs_path , class: "btn btn-xs btn-primary" %>
+
+<% unless @blog.user == current_user %>
+  <% if @favorite.present? %>
+    <%= link_to 'お気に入り解除する', favorite_path(blog_id: @blog.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-prymary' %>
+  <% end %>
+<% end %>
