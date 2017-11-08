@@ -15,7 +15,7 @@
         <td id="blogscontent"><%= blog.content %></td>
         <td class="adjust"><br><br><br><br><%= link_to '確認', blog, class: "btn btn-xs btn-primary" %></td>
 
-        <% if blog.user_id == current_user.id %>
+        <% if blog.user == current_user %>
         <td class="adjust"><br><br><br><br><%= link_to '編集', edit_blog_path(blog), class: "btn btn-xs btn-primary" %></td>
         <td class="adjust"><br><br><br><br><%= link_to '削除', blog, class: "btn btn-xs btn-warning",method: :delete, data: { confirm: '削除して構いませんか？' } %></td>
         <% end %>

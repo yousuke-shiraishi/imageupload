@@ -67,6 +67,7 @@ class BlogsController < ApplicationController
 
  def confirm
     @favorites_blogs= Blog.where(user_id: current_user.favorites)
+    render layout: 'index.html.erb'
  end
 
 
