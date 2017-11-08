@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :login_validate, only: %i[new edit show]
-  before_action :set_blog, only: %i[show edit update destroy]
+  before_action :set_blog, only: %i[edit show update destroy]
 
   # GET /blogs
   # GET /blogs.json
@@ -26,7 +26,7 @@ class BlogsController < ApplicationController
   # POST /blogs
   # POST /blogs.json
   def create
-    @blog = Blog.new(blogs_params)
+    @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id # 現在ログインしているuserのidをblogのuser_idカラムに挿入する。
     # 省略
 
@@ -65,6 +65,15 @@ class BlogsController < ApplicationController
     end
   end
 
+ def confirm
+    @favorites_blogs= Blog.where(user_id: current_user.favorites)
+ end
+
+
+
+
+
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -74,7 +83,7 @@ class BlogsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def blog_params
-    params.require(:blog).permit(:title, :content)
+    params.require(:blog).permit(:content)
   end
 
   def login_validate

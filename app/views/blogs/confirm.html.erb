@@ -1,0 +1,21 @@
+
+<h1>お気に入り一覧</h1>
+<%= link_to '戻る', blog_path %>
+<table>
+  <thead>
+    <tr>
+      <!-- <th>Title</th> -->
+      <th></th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @favorites_blogs.each do |blog| %>
+      <tr class="wrapper">
+        <td id="blogscontent"><%= blog.content %></td>
+        <% end %>
+        <td id="blogpl"><br><br><br><br><%= blog.updated_at %></td>
+      </tr>
+    <% end %>
+</tbody>
+</table>

@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   root to: "blogs#index"
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
-  resources :blogs
   resources :favorites, only: [:create, :destroy]
+  # resources :blogs
+  resources :blogs do
+    collection do
+      get :confirm
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
