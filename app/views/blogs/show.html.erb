@@ -3,15 +3,17 @@
   <strong>Content:</strong>
   <%= @blog.content %>
 </p>
-
+<% if @blog.user_id == current_user %>
 <%= link_to '編集', edit_blog_path(@blog)  , class: "btn btn-xs btn-primary"%> |
+
+<%end%>
 <%= link_to '戻る', blogs_path , class: "btn btn-xs btn-primary" %>
 
 <% unless @blog.user == current_user %>
 
   <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除する', favorite_path(blog_id: @blog.id), method: :delete, class: 'btn btn-danger' %>
+    <%= link_to 'お気に入り解除する', favorite_path(blog_id: @blog.id), method: :delete, class: 'btn btn-xs btn-danger' %>
   <% else %>
-    <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-prymary' %>
+    <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-xs,btn-prymary' %>
   <% end %>
 <% end %>

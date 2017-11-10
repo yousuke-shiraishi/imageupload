@@ -2,6 +2,7 @@
 <h1>Editing Blog</h1>
 
 <%= render 'form', blog: @blog %>
-
+<% if @blog.user == current_user %>
 <%= link_to '確認', @blog , class: "btn btn-xs btn-primary" %>|
+<% end %>
 <%= link_to '戻る', blogs_path  , class: "btn btn-xs btn-primary"%>
