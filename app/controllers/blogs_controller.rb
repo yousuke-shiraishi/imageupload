@@ -12,12 +12,16 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
-   @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   # GET /blogs/new
   def new
-    @blog = Blog.new
+    if params[:back]
+     @blog = Blog.new(blog_params)
+    else
+     @blog = Blog.new
+    end
   end
 
   # GET /blogs/1/edit
@@ -65,16 +69,16 @@ class BlogsController < ApplicationController
     end
   end
 
- def confirm
+  def confirm
     # @favorites_blogs= Blog.where(user_id: current_user.favorites)
     @favorites_blogs = current_user.favorite_blogs
     render layout: 'index.html.erb'
- end
+  end
 
-
-
-
-
+  def check
+    @blog = Blog.new(blog_params)
+    render :new if @blog.invalid?
+  end
 
   private
 
