@@ -19,8 +19,9 @@ class BlogsController < ApplicationController
   def new
     if params[:back]
      @blog = Blog.new(blog_params)
-    else
+     else
      @blog = Blog.new
+     #@blog = current_user.blogs.build(blog_params)
     end
   end
 
@@ -32,6 +33,7 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id # 現在ログインしているuserのidをblogのuser_idカラムに挿入する。
+    BlogtoMailer.blogto_mail(@blog.user).deliver
     # 省略
 
     respond_to do |format|
@@ -76,7 +78,8 @@ class BlogsController < ApplicationController
   end
 
   def check
-    @blog = Blog.new(blog_params)
+    #@blog = Blog.new(blog_params)
+    @blog = current_user.blogs.build(blog_params)
     render :new if @blog.invalid?
   end
 

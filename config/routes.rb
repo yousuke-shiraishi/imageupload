@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :favorites, only: %i[create destroy]
   # resources :blogs
-  resources :blogs, only: %i[index new create edit update destroy] do
+  resources :blogs, only: %i[index new show create edit update destroy] do
     collection do
       get :confirm
       post :check
