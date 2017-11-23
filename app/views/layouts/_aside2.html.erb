@@ -1,12 +1,9 @@
 <aside class="hidden-xs col-md-3 col-lg-3 maincontents3">
   <article class="">
-    <h2>ここにプロフィールを入れる</h2>
-    <ul class="">
-      <li>ダミー</li>
-      <li>ダミー</li>
-      <li>ダミー</li>
-      <li>ダミー</li>
-      <li>ダミー</li>
-    </ul>
+    <h1>New Feed</h1>
+
+    <%= render 'form', feed: @feed %>
+
+    <%= link_to 'Back', feeds_path %>
   </article>
 </aside>
