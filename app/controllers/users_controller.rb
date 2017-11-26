@@ -16,10 +16,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def update
+#binding.pry
+current_user.update(user_params)
+redirect_to root_path
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation,:proimage)
   end
 end

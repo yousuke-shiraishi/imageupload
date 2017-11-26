@@ -12,13 +12,14 @@
       <!-- <div class="jumbotron"></div> -->
       <div class="row">
 
-        <%= render 'layouts/aside1'%>
+        <%= render 'layouts/aside1' %>
 
         <div class="col-xs-12 col-md-6 col-lg-6 text-center maincontents2">
           <%= yield %>
         </div>
+        <% if logged_in? %>
         <%= render 'layouts/aside2' %>
-
+        <% end %>
         <footer class="footer">
           <div class="container">
             <p class="text-muted">Place sticky footer content here.</p>

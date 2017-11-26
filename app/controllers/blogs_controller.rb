@@ -21,7 +21,6 @@ class BlogsController < ApplicationController
      @blog = Blog.new(blog_params)
      else
      @blog = Blog.new
-     #@blog = current_user.blogs.build(blog_params)
     end
   end
 
@@ -92,7 +91,7 @@ class BlogsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def blog_params
-    params.require(:blog).permit(:content)
+    params.require(:blog).permit(:content,:proimage)
   end
 
   def login_validate
