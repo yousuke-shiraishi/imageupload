@@ -1,22 +1,35 @@
 <%= form_with(model: @blog, local: true ,url: choose_new_or_edit ) do |form| %>
-  <% if @blog.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@blog.errors.count, "個エラーがあります,") %>保存されていません。</h2>
+<% if @blog.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@blog.errors.count, "個エラーがあります,") %>保存されていません。</h2>
 
-      <ul>
-      <% @blog.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% @blog.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
+<div class="field">
+  <%= form.label :title %>
+  <%= form.text_field :title%>
+  <%= form.hidden_field :id %>
+</div>
 
-  <div class="field">
-    <%= form.label :content %><br>
-    <%= form.text_area :content, id: :blog_content ,size: "40x4"%>
-  </div>
-    <%= form.submit  class: "btn btn-primary" %><%= link_to '戻る', blogs_path,class: "btn btn-primary"%>
+<div class="field">
+  <%= form.label :content %><br>
+  <%= form.text_area :content, id: :blog_content ,size: "40x4"%>
 
- <% end %>
- <!-- カリキュラム23 -->
+</div>
+
+<div class="field">
+  <%= form.label :image %>
+  <%= form.file_field :image %>
+  
+</div>
+
+<%= form.submit  class: "btn btn-primary" %><%= link_to '戻る', blogs_path,class: "btn btn-primary"%>
+
+<% end %>
+<!-- カリキュラム23 -->

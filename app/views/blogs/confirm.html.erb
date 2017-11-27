@@ -12,6 +12,8 @@
   <tbody>
     <% @favorites_blogs.each do |blog| %>
       <tr class="wrapper">
+        <td id="blogscontent"><%= image_tag blog.image ,size:'300x200'%></td>
+        <td id="blogscontent"><%= blog.title %></td>
         <td id="blogscontent"><%= blog.content %></td>
         <td id="blogpr"><br><br><br><br><%= blog.user.name %></td>
         <td id="blogpr"><br><br><br><br><%= link_to 'お気に入り解除する', favorite_path(blog.id), method: :delete, class: 'btn btn-xs btn-danger'%></td>

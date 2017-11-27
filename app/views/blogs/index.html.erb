@@ -12,6 +12,8 @@
   <tbody>
     <% @blogs.each do |blog| %>
       <tr class="wrapper">
+        <td id="blogscontent"><%= image_tag blog.image %></td>
+        <td id="blogscontent"><%= blog.title %></td>
         <td id="blogscontent"><%= blog.content %></td>
         <td class="adjust"><br><br><br><br><%= link_to '確認', blog, class: "btn btn-xs btn-primary" %></td>
 
