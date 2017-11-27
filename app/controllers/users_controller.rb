@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       redirect_to user_path(@user.id)
-     else
+    else
       render 'new'
     end
   end
@@ -17,15 +17,18 @@ class UsersController < ApplicationController
   end
 
   def update
-#binding.pry
-current_user.update(user_params)
-redirect_to root_path
+    return redirect_to new_user_path unless user_params
+    current_user.update(user_params)
+    redirect_to root_path
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation,:proimage)
+    if params[:user]
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :proimage)
+    else
+      false
+    end
   end
 end
