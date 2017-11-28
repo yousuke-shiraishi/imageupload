@@ -31,8 +31,9 @@ class BlogsController < ApplicationController
   # POST /blogs.json
   def create
     @blog = Blog.new(blog_params)
-  #  binding.pry
+    @blog.image.retrieve_from_cache! params[:cache][:image]
     @blog.user_id = current_user.id # 現在ログインしているuserのidをblogのuser_idカラムに挿入する。
+    #キャッシュから画像を復元する
     BlogtoMailer.blogto_mail(@blog.user).deliver
     # 省略
 

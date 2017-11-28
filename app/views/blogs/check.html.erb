@@ -4,7 +4,8 @@
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
   <%= form.hidden_field :image %>
-
+  <!-- ここ追加 -->
+ <%= hidden_field_tag :"cache[image]", @blog.image.cache_name %>
   <p>タイトル:<%= @blog.title %></p>
   <%= form.submit  "登録する" %>
 <% end %>
